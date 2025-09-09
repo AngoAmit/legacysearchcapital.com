@@ -135,20 +135,43 @@ body{
   flex-wrap: wrap;
 }
 
-.ticker{
-  position:absolute; left:0; right:0; bottom:16px; opacity:.5;
+
+.ticker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  opacity: .5;
   mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-}
-.marquee{
-  display:flex; gap:40px; white-space:nowrap; animation:scroll 29s linear infinite;
-  font-size:14px; letter-spacing:.25em; text-transform:uppercase; color:#bdbdbd;
-}
-.marquee span{opacity:.8}
-@keyframes scroll{
-  from{ transform: translateX(0) }
-  to{ transform: translateX(-50%) }
+  overflow: hidden;
+  height: 32px;
 }
 
+.marquee {
+  display: flex;
+  gap: 40px;
+  white-space: nowrap;
+  animation: marquee-loop 30s linear infinite;
+  font-size: 14px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: #bdbdbd;
+}
+
+.marquee span {
+  opacity: .8;
+  /* Duplicate the ticker items for seamless looping */
+}
+
+/* Keyframes for smooth infinite loop */
+@keyframes marquee-loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 .about{
   display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:18px;
   padding:64px 20px 120px; max-width:1100px; margin:0 auto;
